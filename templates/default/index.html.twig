@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="py-5 text-center">
+        <h2>Statistics</h2>
+        <p class="lead">Please provide the following information:</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4 results-content" {% if calculated == false %}style="display:none"{% endif %}>
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Reporting Statistics</span>
+            </h4>
+            <ul class="list-group mb-3 results">
+                {% if calculated == true %}
+                {{ results|raw}}
+                {% endif %}
+            </ul>
+
+        </div>
+        <div class="col-md-8 order-md-1">
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {{ form_start(form) }}
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    {{ form_label(form.rangeStart) }}
+                    {{ form_widget(form.rangeStart) }}
+                    {{ form_errors(form.rangeStart) }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form_label(form.rangeEnd) }}
+                    {{ form_widget(form.rangeEnd) }}
+                    {{ form_errors(form.rangeEnd) }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form_label(form.region) }}
+                    {{ form_widget(form.region) }}
+                    {{ form_errors(form.region) }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form_label(form.gender) }}
+                    {{ form_widget(form.gender) }}
+                    {{ form_errors(form.gender) }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form_label(form.legalAge) }}
+                    {{ form_widget(form.legalAge) }}
+                    {{ form_errors(form.legalAge) }}
+                </div>
+                <div class="col-md-6 mb-3">
+                    {{ form_label(form.score) }}
+                    {{ form_widget(form.score) }}
+                    {{ form_errors(form.score) }}
+                </div>
+                <div class="col-md-12 mb-6">
+                    {{ form_label(form.csv) }}
+                    {{ form_widget(form.csv) }}
+                    {{ form_errors(form.csv) }}
+                </div>
+
+            </div>
+            <hr class="mb-4">
+                <a class="btn btn-danger btn-md btn-block" style="color:#fff" id="calculate">Calculate</a>
+            
+            {{ form_widget(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

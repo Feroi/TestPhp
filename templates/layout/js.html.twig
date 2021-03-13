@@ -1,0 +1,23 @@
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+    function wait() {
+        $('body').addClass("csspinner");
+        $('body').addClass("load");
+    }
+    function stopwait() {
+        $('body').removeClass("csspinner");
+        $('body').removeClass("load");
+    }
+    $('#calculate').click(function (e) {
+
+        var form = $('form');
+        var reportValidity = form[0].reportValidity();
+        if(reportValidity){
+            $('.results-content').hide();
+            wait();
+            form.submit();
+        }
+    });
+</script>

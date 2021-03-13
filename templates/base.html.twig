@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    {{ include('layout/css.html.twig') }}
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+    <div class="container">
+
+    {% block body %}{% endblock %}
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; EON 2021</p>
+    </footer>
+</div>
+    {{ include('layout/js.html.twig') }}
+    {% block javascripts %}{% endblock %}
+</body>
+
+</html>
